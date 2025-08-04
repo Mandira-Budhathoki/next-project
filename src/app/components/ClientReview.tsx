@@ -1,71 +1,140 @@
-// components/ClientReviews.js
-
 export default function ClientReviews() {
   const reviews = [
     {
-      name: 'Mandira Budhathoki',
-      review: 'Amazing service! Highly recommended.',
+      name: 'Imran A. Khan',
+      review:
+        'Great sevice! The owner is very friendly and professional, as are the mechanics who work here.',
     },
     {
-      name: 'Siomona Thapa',
-      review: 'Professional and quick. Loved the experience.',
+      name: 'Rizwan Asghar',
+      review:
+        'I had the best experience. The owner is very humble man I neede a brake replacement, a...',
     },
     {
-      name: 'Aastha Paudel',
-      review: 'Very satisfied with the customer support.',
+      name: 'Vinny Iadevaia',
+      review:
+        'Only place in the area open on Sunday that was doing NYS inspections. Quick and easy, had..',
     },
     {
-      name: 'Aabriti Pradhan',
-      review: 'Reliable and friendly team. Great work!',
+      name: 'Imran A.Khan',
+      review:
+        'Grea Service! The owner is friendly and professional, as are the mechanics who work here.',
     },
   ];
 
   return (
-    <div style={{ padding: '60px 0', backgroundColor: '#fff' }}>
-      {/* Heading */}
-      <h2 style={{ textAlign: 'center', fontSize: '2rem', marginBottom: '40px' }}>
-        What our clients are Saying
-      </h2>
-
-      {/* Review boxes */}
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '30px',
-          flexWrap: 'wrap',
-        }}
-      >
-        {reviews.map((item, index) => (
-          <div
-            key={index}
-            style={{
-              width: '250px',
-              height: '250px',
-              border: '1px solid #ccc',
-              borderRadius: '12px',
-              padding: '20px',
-              boxSizing: 'border-box',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              boxShadow: '0 4px 10px rgba(0,0,0,0.05)',
-              textAlign: 'center',
-            }}
-          >
-            <p style={{ fontSize: '1rem', color: '#444' }}>{item.review}</p>
-
-            <div>
-              <p style={{ fontWeight: 'bold', margin: '12px 0 8px' }}>{item.name}</p>
-
-              {/* Star Rating */}
-              <div style={{ color: '#FFD700', fontSize: '1.2rem' }}>
-                {'★'.repeat(5)}
-              </div>
+    <>
+      <div className="client-reviews">
+        <h2>What our clients are Saying</h2>
+        <div className="reviews-container">
+          {reviews.map((item, index) => (
+            <div key={index} className="review-card">
+              <div className="stars">{'★'.repeat(5)}</div>
+              <p className="review-text">{item.review}</p>
+              <p className="reviewer-name">{item.name}</p>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+
+      <style jsx>{`
+        .client-reviews {
+          padding: 60px 20px;
+          background-color: #fff;
+          text-align: center;
+          color: #222;
+        }
+
+        h2 {
+          font-size: 2rem;
+          margin-bottom: 40px;
+        }
+
+        .reviews-container {
+          display: flex;
+          justify-content: center;
+          gap: 25px;
+          flex-wrap: wrap;
+        }
+
+        .review-card {
+          flex: 1 1 220px;
+          max-width: 220px;
+          min-height: 220px;
+          background-color: #f9f9f9;
+          border-radius: 12px;
+          padding: 15px;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          text-align: center;
+          color: #444;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+          transition: transform 0.3s ease;
+        }
+
+        .review-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stars {
+          color: #ffd700;
+          font-size: 1rem;
+          margin-bottom: 12px;
+        }
+
+        .review-text {
+          font-size: 0.9rem;
+          line-height: 1.4;
+          flex-grow: 1;
+        }
+
+        .reviewer-name {
+          font-weight: bold;
+          margin-top: 16px;
+          color: #222;
+          font-size: 0.95rem;
+        }
+
+        /* Tablet */
+        @media (max-width: 768px) {
+          .review-card {
+            max-width: 180px;
+            min-height: 200px;
+            padding: 12px;
+          }
+
+          .stars {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+          }
+
+          .review-text {
+            font-size: 0.85rem;
+          }
+
+          .reviewer-name {
+            font-size: 0.9rem;
+          }
+        }
+
+        /* Mobile */
+        @media (max-width: 480px) {
+          .reviews-container {
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+          }
+
+          .review-card {
+            max-width: 280px;
+            min-height: auto;
+            padding: 20px;
+          }
+        }
+      `}</style>
+    </>
   );
 }

@@ -1,3 +1,5 @@
+'use client';
+
 import Navbar from './components/Navbar';
 import YellowBanner from './components/YellowBanner';
 import Contact from './components/Contact';

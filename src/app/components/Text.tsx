@@ -13,79 +13,122 @@ export default function RectangleSection() {
     {
       src: 's3.PNG',
       alt: 'Image 3',
-      desc: 'Experinced Professionals',
+      desc: 'Experienced Professionals',
     },
   ];
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        width: '100%',
-        maxWidth: '900px',
-        height: '320px',
-        border: '2px solid #333',
-        borderRadius: '8px',
-        overflow: 'hidden',
-        margin: '20px auto',
-      }}
-    >
-      {/* Left half with text */}
-      <div
-        style={{
-          flex: 1,
-          padding: '30px',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          boxSizing: 'border-box',
-          gap: '12px',
-        }}
-      >
-        <h1 style={{ margin: 0, fontSize: '2.8rem' }}>Your Perfect Choice For Auto Repair Services</h1>
-        <p style={{ margin: 0, fontSize: '1.1rem', color: '#555' }}>
-          At car mart Auto service, we are more than just an auto shop.
-        </p>
+    <>
+      <div className="container">
+        
+        <div className="text-side">
+          <h1>Your Perfect Choice For Auto Repair Services</h1>
+          <p>At car mart Auto service, we are more than just an auto shop.</p>
+        </div>
+
+        {/* Right half with vertically stacked images and descriptions */}
+        <div className="images-side">
+          {images.map(({ src, alt, desc }) => (
+            <div key={alt} className="image-row">
+              <img src={src} alt={alt} />
+              <span>{desc}</span>
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* Right half with vertically stacked images and descriptions */}
-      <div
-        style={{
-          flex: 1,
-          padding: '20px',
-          boxSizing: 'border-box',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-around',
-          alignItems: 'center',
-        }}
-      >
-        {images.map(({ src, alt, desc }) => (
-          <div
-            key={alt}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '15px',
-              width: '100%',
-              maxWidth: '280px',
-            }}
-          >
-            <img
-              src={src}
-              alt={alt}
-              style={{
-                width: '80px',
-                height: '80px',
-                objectFit: 'cover',
-                borderRadius: '6px',
-                border: '1px solid #ccc',
-              }}
-            />
-            <span style={{ fontSize: '1rem', color: '#444' }}>{desc}</span>
-          </div>
-        ))}
-      </div>
-    </div>
+      <style jsx>{`
+        .container {
+          display: flex;
+          max-width: 900px;
+          width: 100%;
+          margin: 20px auto;
+          gap: 30px;
+          flex-wrap: wrap; /* allows stacking on small screens */
+          align-items: flex-start;
+        }
+
+        .text-side {
+          flex: 1 1 400px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 12px;
+        }
+
+        .text-side h1 {
+          margin: 0;
+          font-size: 2.2rem;
+          line-height: 1.1;
+          color: #222;
+        }
+
+        .text-side p {
+          margin: 0;
+          font-size: 1.1rem;
+          color: #555;
+        }
+
+        .images-side {
+          flex: 1 1 300px;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .image-row {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+        }
+
+        .image-row img {
+          width: 80px;
+          height: 80px;
+          object-fit: cover;
+          border-radius: 6px;
+          border: 1px solid #ccc;
+        }
+
+        .image-row span {
+          font-size: 1rem;
+          color: #444;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+          .container {
+            flex-direction: column;
+            gap: 20px;
+          }
+
+          .text-side,
+          .images-side {
+            flex: 1 1 100%;
+          }
+
+          .text-side h1 {
+            font-size: 1.8rem;
+          }
+
+          .images-side {
+            gap: 15px;
+          }
+
+          .image-row {
+            gap: 10px;
+          }
+
+          .image-row img {
+            width: 70px;
+            height: 70px;
+          }
+
+          .image-row span {
+            font-size: 0.95rem;
+          }
+        }
+      `}</style>
+    </>
   );
 }

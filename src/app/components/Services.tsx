@@ -1,20 +1,8 @@
 export default function ThreeImageRow() {
   const images = [
-    {
-      src: 't1.PNG',
-      alt: 'Image 1',
-      desc: 'From dents to major collision repairs',
-    },
-    {
-      src: 't2.PNG',
-      alt: 'Image 2',
-      desc: 'From new tires to rotations and flat repairs',
-    },
-    {
-      src: 't3.PNG',
-      alt: 'Image 3',
-      desc: 'Quiet down your ride or boost',
-    },
+    { src: 't1.PNG', alt: 'Image 1', desc: 'From dents to major collision repairs' },
+    { src: 't2.PNG', alt: 'Image 2', desc: 'From new tires to rotations and flat repairs' },
+    { src: 't3.PNG', alt: 'Image 3', desc: 'Quiet down your ride or boost' },
   ];
 
   return (
@@ -22,33 +10,38 @@ export default function ThreeImageRow() {
       style={{
         display: 'flex',
         justifyContent: 'center',
-        gap: '40px',
-        marginTop: '40px',
+        gap: 40,
         flexWrap: 'wrap',
+        marginTop: 40,
       }}
     >
-      {images.map(({ src, alt, desc }, index) => (
+      {images.map(({ src, alt, desc }, i) => (
         <div
-          key={index}
-          style={{ 
-            display: 'flex', 
-            flexDirection: 'column', 
+          key={i}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
-            maxWidth: '150px',
+            maxWidth: 150,
           }}
         >
           <img
             src={src}
             alt={alt}
             style={{
-              width: '150px',
-              height: '150px',
+              width: 150,
+              height: 150,
               objectFit: 'cover',
-              borderRadius: '8px',
-              border: '1px solid #ccc',
+              border: 'none',
+              boxShadow: 'none',
+              padding: 0,
+              margin: 0,
+              background: 'none',
+              borderRadius: 0,
+              display: 'block',
             }}
           />
-          <p style={{ marginTop: '10px', textAlign: 'center', fontSize: '1rem', color: '#444' }}>
+          <p style={{ marginTop: 10, fontSize: 16, color: '#444', textAlign: 'center' }}>
             {desc}
           </p>
         </div>
